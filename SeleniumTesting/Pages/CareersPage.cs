@@ -30,6 +30,12 @@ namespace SeleniumTesting.Pages
         [CacheLookup]
         private IWebElement keywordPanel;
 
+       [FindsBy(How = How.CssSelector, Using = "#main > div.content-container.parsys > div:nth-child(3) > section > div > div.job-search.recruiting-search > div > form > div:nth-child(1)")]
+        [CacheLookup]
+       private IWebElement keywordTextPanel;
+
+        
+
         public String getPageTitle()
         {
             return driver.Title;
@@ -47,8 +53,10 @@ namespace SeleniumTesting.Pages
         {
             load_complete();
             keywordPanel.Click();
-            keywordPanel.SendKeys(input_search);
-            keywordPanel.Submit();
+            //keywordPanel.SendKeys(input_search);
+            //keywordPanel.Submit();
+            keywordTextPanel.SendKeys(input_search);
+            keywordTextPanel.Submit();
             //wait.Until(ExpectedConditions.ElementToBeClickable(elem_submit_button)).Submit();
             //elem_search_text.Submit();
             //searchButton.Click();

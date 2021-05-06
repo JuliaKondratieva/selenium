@@ -57,6 +57,14 @@ namespace SeleniumTesting.Pages
         [CacheLookup]
         private IWebElement careersButton;
 
+        [FindsBy(How = How.XPath, Using = "//a[@href='/insights']")]
+        [CacheLookup]
+        private IWebElement insightsButton;
+
+        // [FindsBy(How = How.CssSelector, Using = "body > div.cookie-disclaimer-container.iparsys.parsys > div.iparys_inherited > div > div > div > div > div.cookie-disclaimer__column > button")]
+        //[CacheLookup]
+        //private IWebElement acceptCookiesButton;
+
 
         //[FindsBy(How = How.XPath, Using = "//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")]
         //[FindsBy(How = How.Name, Using = "q")]
@@ -124,8 +132,15 @@ namespace SeleniumTesting.Pages
 
         public CareersPage goto_careers()
         {
+            //acceptCookiesButton.Click();
             careersButton.Click();
             return new CareersPage(driver);
+        }
+
+        public InsightsPage goto_insights()
+        {
+            insightsButton.Click();
+            return new InsightsPage(driver);
         }
     
     }

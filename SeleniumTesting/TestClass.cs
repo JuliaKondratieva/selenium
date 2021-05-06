@@ -108,6 +108,65 @@ namespace SeleniumTesting
         }
 
         [Test]
+        public void filterInsights()
+        {
+            String result_PageTitle;
+            String expected_title = "healthcare";
+            MainPage home_page = new MainPage(driver);
+            home_page.goToPage();
+
+            InsightsPage insights_page = home_page.goto_insights();
+
+            SearchPage final_page = insights_page.test_filterInsights();
+
+            // Ensure that the page load is complete    
+            final_page.load_complete();
+
+            //As the web page is loaded, we just check if the page title matches or not.
+            result_PageTitle = final_page.getPageTitle();
+
+            if (result_PageTitle.ToLower().Contains(expected_title) || driver.Url.ToLower().Contains(expected_title))
+            {
+                Console.WriteLine("Filter Test Passed");
+            }
+            else
+            {
+                Console.WriteLine("Filter Test Failed");
+            }
+
+        }
+
+        [Test]
+        public void filterInsights2()
+        {
+            String result_PageTitle;
+            String expected_title = "healthcare";
+            String expected_title_2 = "interview";
+            MainPage home_page = new MainPage(driver);
+            home_page.goToPage();
+
+            InsightsPage insights_page = home_page.goto_insights();
+
+            SearchPage final_page = insights_page.test_filterInsights_2();
+
+            // Ensure that the page load is complete    
+            final_page.load_complete();
+
+            //As the web page is loaded, we just check if the page title matches or not.
+            result_PageTitle = final_page.getPageTitle();
+
+            if (result_PageTitle.ToLower().Contains(expected_title) && result_PageTitle.ToLower().Contains(expected_title_2) && driver.Url.ToLower().Contains(expected_title) && driver.Url.ToLower().Contains(expected_title_2))
+            {
+                Console.WriteLine("Filter Test Passed");
+            }
+            else
+            {
+                Console.WriteLine("Filter Test Failed");
+            }
+
+        }
+
+        [Test]
         public void KeywordJobsSearch()
         {
             String expected_keyword = "Lviv";
@@ -120,6 +179,8 @@ namespace SeleniumTesting
 
             // SearchPage search_page = new SearchPage(driver); ;
             CareersPage careers_page = home_page.goto_careers();
+
+            careers_page.load_complete();
 
             SearchPage final_page = careers_page.test_search(search_string);
 
