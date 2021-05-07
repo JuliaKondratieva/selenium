@@ -61,26 +61,6 @@ namespace SeleniumTesting.Pages
         [CacheLookup]
         private IWebElement insightsButton;
 
-        // [FindsBy(How = How.CssSelector, Using = "body > div.cookie-disclaimer-container.iparsys.parsys > div.iparys_inherited > div > div > div > div > div.cookie-disclaimer__column > button")]
-        //[CacheLookup]
-        //private IWebElement acceptCookiesButton;
-
-
-        //[FindsBy(How = How.XPath, Using = "//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")]
-        //[FindsBy(How = How.Name, Using = "q")]
-        //[CacheLookup]
-        //private IWebElement elem_search_text;
-
-        //[FindsBy(How = How.XPath, Using = "//*[@id='tsf']/div[2]/div/div[3]/center/input[1]")]
-        //[FindsBy(How = How.Name, Using = "btnI")]
-        //[CacheLookup]
-        //private IWebElement elem_submit_button;
-
-        //[FindsBy(How = How.XPath, Using = "//*[@id='hplogo']")]
-        //[FindsBy(How = How.Id, Using = "hplogo")]
-        //[CacheLookup]
-        //private IWebElement elem_logo_img;
-
         // Go to the designated page
         public void goToPage()
         {
@@ -99,11 +79,6 @@ namespace SeleniumTesting.Pages
             return searchPanel.Text;
         }
 
-        // Checks whether the Logo is displayed properly or not
-        //public bool getWebPageLogo()
-        //{
-          //  return elem_logo_img.Displayed;
-        //}
 
         public SearchPage test_search(string input_search)
         {
@@ -111,9 +86,6 @@ namespace SeleniumTesting.Pages
             searchPanel.Click();
             searchPanel.SendKeys(input_search);
             searchPanel.Submit();
-            //wait.Until(ExpectedConditions.ElementToBeClickable(elem_submit_button)).Submit();
-            //elem_search_text.Submit();
-            //searchButton.Click();
             return new SearchPage(driver);
         }
 
@@ -132,7 +104,6 @@ namespace SeleniumTesting.Pages
 
         public CareersPage goto_careers()
         {
-            //acceptCookiesButton.Click();
             careersButton.Click();
             return new CareersPage(driver);
         }

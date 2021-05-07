@@ -167,11 +167,72 @@ namespace SeleniumTesting
         }
 
         [Test]
+        public void careersFilterSkills()
+        {
+            String result_PageTitle;
+            String expected_title = "data";
+            MainPage home_page = new MainPage(driver);
+            home_page.goToPage();
+
+            CareersPage final_page = home_page.goto_careers();
+            final_page.test_searchSkills();
+
+            //SearchPage final_page = careers_page.test_searchSkills();
+
+            // Ensure that the page load is complete    
+            final_page.load_complete();
+
+            //As the web page is loaded, we just check if the page title matches or not.
+            result_PageTitle = final_page.getPageTitle();
+
+            if (result_PageTitle.ToLower().Contains(expected_title) || driver.Url.ToLower().Contains(expected_title))
+            {
+                Console.WriteLine("Search Test Passed");
+            }
+            else
+            {
+                Console.WriteLine("Search Test Failed");
+            }
+
+        }
+
+        [Test]
+        public void careersFilterSkillsRemote()
+        {
+            String result_PageTitle;
+            String expected_title = "data";
+            String expected_title_2 = "remote";
+            MainPage home_page = new MainPage(driver);
+            home_page.goToPage();
+
+            CareersPage final_page = home_page.goto_careers();
+            final_page.test_searchSkillsRemote();
+
+            //SearchPage final_page = careers_page.test_searchSkills();
+
+            // Ensure that the page load is complete    
+            final_page.load_complete();
+
+            //As the web page is loaded, we just check if the page title matches or not.
+            result_PageTitle = final_page.getPageTitle();
+
+            if ((result_PageTitle.ToLower().Contains(expected_title)&& result_PageTitle.ToLower().Contains(expected_title_2)) || (driver.Url.ToLower().Contains(expected_title) && driver.Url.ToLower().Contains(expected_title_2)))
+            {
+                Console.WriteLine("Search Test Passed");
+            }
+            else
+            {
+                Console.WriteLine("Search Test Failed");
+            }
+
+        }
+
+        [Test]
         public void KeywordJobsSearch()
         {
-            String expected_keyword = "Lviv";
+            String expected_keyword = "lviv";
             String result_PageTitle;
-            String search_string = "Lviv";
+            String search_string = "lviv";
 
             MainPage home_page = new MainPage(driver);
             home_page.goToPage();

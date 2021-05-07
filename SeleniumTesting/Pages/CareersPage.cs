@@ -30,9 +30,32 @@ namespace SeleniumTesting.Pages
         [CacheLookup]
         private IWebElement keywordPanel;
 
-       [FindsBy(How = How.CssSelector, Using = "#main > div.content-container.parsys > div:nth-child(3) > section > div > div.job-search.recruiting-search > div > form > div:nth-child(1)")]
+       [FindsBy(How = How.Id, Using = "new_form_job_search_1445745853_copy-keyword")]
         [CacheLookup]
        private IWebElement keywordTextPanel;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='main']/div[1]/div[3]/section/div/div[2]/div/form/div[3]/div/div[1]")]
+        [CacheLookup]
+        private IWebElement skillsList;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='main']/div[1]/div[3]/section/div/div[2]/div/form/div[3]/div/div[2]/div/ul[1]/li[4]/label/span")]
+        [CacheLookup]
+        private IWebElement dataAnalystCheck;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='main']/div[1]/div[1]/section/div/div/div/form/button")]
+        [CacheLookup]
+        private IWebElement findButton;
+        
+
+        [FindsBy(How = How.ClassName, Using = "//*[@id='main']/div[1]/div[1]/section/div/div/div/section/ul/li[1]/div[2]/div/div")]
+        [CacheLookup]
+        private IWebElement firstLink;
+
+        
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/main/div[1]/div[3]/section/div/div[2]/div/form/fieldset/div/p[3]")]
+        [CacheLookup]
+        private IWebElement remoteCheck;
+
 
         
 
@@ -61,6 +84,27 @@ namespace SeleniumTesting.Pages
             //elem_search_text.Submit();
             //searchButton.Click();
             return new SearchPage(driver);
+        }
+
+        public void test_searchSkills()
+        {
+            skillsList.Click();
+            dataAnalystCheck.Click();
+            skillsList.Submit();
+            //findButton.Click();
+            //firstLink.Click();
+            //return new SearchPage(driver);
+        }
+
+        public void test_searchSkillsRemote()
+        {
+            skillsList.Click();
+            dataAnalystCheck.Click();
+            remoteCheck.Click();
+            skillsList.Submit();
+            //findButton.Click();
+            //firstLink.Click();
+            //return new SearchPage(driver);
         }
     }
 }
