@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using SeleniumTesting.Pages;
+using System.IO;
+using System.Reflection;
 
 namespace SeleniumTesting
 {
@@ -18,7 +20,8 @@ namespace SeleniumTesting
         [SetUp]
         public void startBrowser()
         {
-            driver = new FirefoxDriver("D:\\3\\trpz\\driver\\");
+            //driver = new FirefoxDriver("D:\\3\\trpz\\driver\\");
+            driver = new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
         }
 
         [Test]
